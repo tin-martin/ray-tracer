@@ -273,3 +273,23 @@ scene1.setCanvas(vp1)
 scene1.addObj(sphere1)
 scene1.addObj(cone1)
 scene1.addObj(circle1)
+lv = np.array([0,0,1])
+
+for i in range(37):
+    scene1.clearCanvas()
+    #cone1.axis = np.array([0,np.sin(np.radians(ang)),np.cos(np.radians(ang))])
+    print(scene1.by)
+    scene1.rayTrace(cam1, vp1)
+    scene1.changeAngleY(scene1.by+10)
+    cam1.pv = np.array([cameraDist*np.cos(np.radians(-90+scene1.by)),0,cameraDist*np.sin(np.radians(-90+scene1.by))])
+    
+    #scene1.changeAngleX(scene1.bx+10)
+    #cam1.pv = np.array([0,cameraDist*np.sin(np.radians(180+scene1.bx)),-cameraDist*np.cos(np.radians(180+scene1.bx))])
+
+   # scene1.changeAngleZ(scene1.bz+10)
+   # cam1.pv = np.array([cameraDist*np.sin(np.radians(scene1.bz)),cameraDist*np.sin(np.radians(scene1.bz)),-cameraDist])
+
+ani = animation.ArtistAnimation(fig, ims, interval=50, blit=True,repeat_delay=1000)
+ani.save("movie1.mp4")
+
+plt.show()
